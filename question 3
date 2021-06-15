@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+const ll mod = 1000000007;
+ll knapSack(ll w, ll wt[], ll val[], ll n) 
+{ 
+       ll dp[n+1][w+1];
+       for(ll i=0;i<=n;i++){
+           for(ll j=0;j<=w;j++){
+               if(i==0||j==0){
+                   dp[i][j]=0;
+               }
+               else{
+                   if(wt[i-1]>j){
+                       dp[i][j]=dp[i-1][j];
+                   }
+                   else{
+                       dp[i][j]=max(dp[i-1][j],val[i-1]+dp[i-1][j-wt[i-1]]);
+                   }
+               }
+           }
+       }
+       return dp[n][w];
+}
+void vp(ll test){
+   ll n,w;
+   cin>>n>>w;
+   ll val[n];
+   ll wt[n];
+   for(ll i=0;i<n;i++){
+       cin>>wt[i];
+   }
+   for(ll i=0;i<n;i++){
+       cin>>val[i];
+   }
+   ll ans=knapSack(w,wt,val,n);
+   cout<<ans;
+}
+int main()
+{
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+  ll t = 1;
+  cin >> t;
+  ll x=1;
+  while (t--)
+  {
+    vp(x);
+    cout<<"\n";
+  }
+  return 0;
+}
