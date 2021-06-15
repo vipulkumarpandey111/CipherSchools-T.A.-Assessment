@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+#define ll long long
+using namespace std;
+const ll mod = 1000000007;
+
+void vp(ll test){
+   ll n;
+   cin>>n;
+   ll arr[n];
+   for(ll i=0;i<n;i++){
+       cin>>arr[i];
+   }
+   sort(arr,arr+n);
+    cout<<"Enter No. of queries u want to process on given arr"<<'\n';
+    ll query;
+    cin>>query;
+    while(query--){
+        ll enter_query;
+        cin>>enter_query;
+        ll robot_answer;
+        cin>>robot_answer;
+        ll ans=0;
+        for(ll i=0;i<n;i++){
+          if(arr[i]<=enter_query){
+              ans++;
+          }
+          else{
+              break;
+          }
+       }
+       if(robot_answer==ans){
+           cout<<"Right\n";
+       }
+       else{
+           cout<<"wrong\n";
+       }
+    }
+}
+int main()
+{
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+  cout.tie(NULL);
+  ll t = 1;
+  cin >> t;
+  ll x=1;
+  while (t--)
+  {
+    vp(x);
+    cout<<"\n";
+  }
+  return 0;
+}
